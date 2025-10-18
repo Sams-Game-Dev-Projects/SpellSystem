@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00899324f2ce4fc69e299f790eea4a1, type: 3}
+  m_Name: Self_Heal_Instant
+  m_EditorClassIdentifier: 
+  displayName: Instant Heal
+  description: Immediately restores health to the caster.
+  targeting: 0
+  type: 3
+  isHealing: 1
+  manaCost: 20
+  delivery: 0
+  amount: 50
+  duration: 5
+  tickInterval: 1
+  projectilePrefab: {fileID: 0}
+  castVFXPrefab: {fileID: 4838708592707320667, guid: 99570cae58b1f4870b493f428f35141b, type: 3}
+  impactVFXPrefab: {fileID: 0}
+  castSfx: {fileID: 0}
+  impactSfx: {fileID: 0}
+  projectileSpeed: 15
+  projectileLifetime: 5
+  spawnOffset: 1

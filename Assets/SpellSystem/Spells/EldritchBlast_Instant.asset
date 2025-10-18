@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00899324f2ce4fc69e299f790eea4a1, type: 3}
+  m_Name: EldritchBlast_Instant
+  m_EditorClassIdentifier: 
+  displayName: Eldritch Blast
+  description: Launch a bolt that deals force damage instantly.
+  targeting: 1
+  type: 4
+  isHealing: 0
+  manaCost: 12
+  delivery: 0
+  amount: 40
+  duration: 5
+  tickInterval: 1
+  projectilePrefab: {fileID: 5558327546254429300, guid: 63ba84ac072824379935930f4b6cd83d, type: 3}
+  castVFXPrefab: {fileID: 0}
+  impactVFXPrefab: {fileID: 1952891658101693672, guid: 9d2650248a5a744faac74228babfe762, type: 3}
+  castSfx: {fileID: 0}
+  impactSfx: {fileID: 0}
+  projectileSpeed: 24
+  projectileLifetime: 4
+  spawnOffset: 1

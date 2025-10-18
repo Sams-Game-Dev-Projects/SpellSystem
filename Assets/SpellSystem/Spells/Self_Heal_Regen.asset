@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00899324f2ce4fc69e299f790eea4a1, type: 3}
+  m_Name: Self_Heal_Regen
+  m_EditorClassIdentifier: 
+  displayName: Heal Over Time
+  description: Regenerate health over a short duration.
+  targeting: 0
+  type: 6
+  isHealing: 1
+  manaCost: 15
+  delivery: 1
+  amount: 50
+  duration: 5
+  tickInterval: 1
+  projectilePrefab: {fileID: 0}
+  castVFXPrefab: {fileID: 8163544931105960685, guid: 13315407feb384dc6a92ce452a0a5a43, type: 3}
+  impactVFXPrefab: {fileID: 0}
+  castSfx: {fileID: 0}
+  impactSfx: {fileID: 0}
+  projectileSpeed: 15
+  projectileLifetime: 5
+  spawnOffset: 1

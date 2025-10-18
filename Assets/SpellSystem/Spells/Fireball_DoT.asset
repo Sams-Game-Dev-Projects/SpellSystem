@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00899324f2ce4fc69e299f790eea4a1, type: 3}
+  m_Name: Fireball_DoT
+  m_EditorClassIdentifier: 
+  displayName: Fireball (DoT)
+  description: Launch a fireball that burns enemies over time.
+  targeting: 1
+  type: 1
+  isHealing: 0
+  manaCost: 10
+  delivery: 1
+  amount: 30
+  duration: 3
+  tickInterval: 0.5
+  projectilePrefab: {fileID: 4459933291855839307, guid: 218a5f65399c843af9f324b2371e054f, type: 3}
+  castVFXPrefab: {fileID: 0}
+  impactVFXPrefab: {fileID: 478547591697806685, guid: aa69f0400f4fb45549eabd8955f2428a, type: 3}
+  castSfx: {fileID: 0}
+  impactSfx: {fileID: 0}
+  projectileSpeed: 18
+  projectileLifetime: 5
+  spawnOffset: 1

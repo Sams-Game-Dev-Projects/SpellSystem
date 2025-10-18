@@ -425,7 +425,19 @@ MonoBehaviour:
     m_ActionId: 351f2ccd-1f9f-44bf-9bec-d62ac5c5f408
     m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 726682073}
+        m_TargetAssemblyTypeName: SpellSystem.PlayerController, Assembly-CSharp
+        m_MethodName: OnLook
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6b444451-8a00-4d00-a97e-f47457f736a8
     m_ActionName: 'Player/Look[/Mouse/delta,/Pen/delta]'
   - m_PersistentCalls:
@@ -578,7 +590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
-  rotationSpeed: 720
+  mouseSensitivity: 2
 --- !u!143 &726682074
 CharacterController:
   m_ObjectHideFlags: 0
@@ -753,7 +765,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1385593225}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1385593222
@@ -842,12 +855,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1385593222}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0.13, y: 4.31, z: -9.15}
+  m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
+  m_LocalPosition: {x: 0.13, y: 3.31, z: -3.1499996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 726682081}
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!114 &1385593226
 MonoBehaviour:
@@ -1278,7 +1291,6 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1385593225}
   - {fileID: 1905447351}
   - {fileID: 32264509}
   - {fileID: 726682081}

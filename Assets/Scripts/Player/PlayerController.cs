@@ -3,16 +3,21 @@ using UnityEngine.InputSystem;
 
 namespace SpellSystem
 {
-    // Simple WASD controller that faces move direction and casts spells via Input System Unity Events.
+    // WASD movement with A/D strafing and mouse look for turning. Uses Input System Unity Events.
     [RequireComponent(typeof(SpellCaster))]
     [DisallowMultipleComponent]
     public class PlayerController : MonoBehaviour
     {
         [Header("Movement")]
         public float moveSpeed = 6f;
-        public float rotationSpeed = 720f; // deg/sec
+
+        [Header("Mouse Look")]
+        public float mouseSensitivity = 2.0f; // degrees per pixel
 
         private Vector2 _moveInput;
+        private Vector2 _lookDelta;
+        private float _yaw;
+
         private SpellCaster _caster;
         private CharacterController _cc; // optional
 
@@ -20,19 +25,23 @@ namespace SpellSystem
         {
             _caster = GetComponent<SpellCaster>();
             _cc = GetComponent<CharacterController>();
+            _yaw = transform.eulerAngles.y;
         }
 
         private void Update()
         {
-            Vector3 move = GetWorldMoveVector(_moveInput);
-            if (move.sqrMagnitude > 0.0001f)
+            // Apply mouse look yaw to turn player
+            if (_lookDelta.sqrMagnitude > 0f)
             {
-                // Face movement direction (y-only)
-                var targetRot = Quaternion.LookRotation(move, Vector3.up);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, rotationSpeed * Time.deltaTime);
+                _yaw += _lookDelta.x * mouseSensitivity;
+                transform.rotation = Quaternion.Euler(0f, _yaw, 0f);
+                // consume this frame's delta
+                _lookDelta = Vector2.zero;
             }
 
-            // Move
+            // Move relative to player facing (W/S forward/back, A/D strafe)
+            Vector3 move = GetLocalMoveVector(_moveInput, transform);
+
             Vector3 displacement = move * moveSpeed * Time.deltaTime;
             if (_cc != null)
             {
@@ -50,28 +59,26 @@ namespace SpellSystem
             _moveInput = context.ReadValue<Vector2>();
         }
 
+        // Input System: bind Player/Look to this (uses mouse delta)
+        public void OnLook(InputAction.CallbackContext context)
+        {
+            var delta = context.ReadValue<Vector2>();
+            _lookDelta += delta; // accumulate for this frame
+        }
+
         // Bind actions Player/Spell1..4 to these. Only cast on performed.
         public void OnSpell1(InputAction.CallbackContext context) { if (context.performed) _caster.CastSlot(0); }
         public void OnSpell2(InputAction.CallbackContext context) { if (context.performed) _caster.CastSlot(1); }
         public void OnSpell3(InputAction.CallbackContext context) { if (context.performed) _caster.CastSlot(2); }
         public void OnSpell4(InputAction.CallbackContext context) { if (context.performed) _caster.CastSlot(3); }
 
-        private static Vector3 GetWorldMoveVector(Vector2 input)
+        private static Vector3 GetLocalMoveVector(Vector2 input, Transform t)
         {
-            var v = new Vector3(input.x, 0f, input.y);
+            var forward = t.forward; forward.y = 0f; forward.Normalize();
+            var right = t.right; right.y = 0f; right.Normalize();
+            var v = (right * input.x + forward * input.y);
             if (v.sqrMagnitude > 1f) v.Normalize();
-
-            // If a camera exists, move relative to its facing
-            var cam = Camera.main;
-            if (cam != null)
-            {
-                Vector3 fwd = cam.transform.forward; fwd.y = 0f; fwd.Normalize();
-                Vector3 right = cam.transform.right; right.y = 0f; right.Normalize();
-                return (fwd * v.z + right * v.x).normalized;
-            }
-
             return v;
         }
     }
 }
-
